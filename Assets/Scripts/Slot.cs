@@ -20,7 +20,10 @@ public class Slot : MonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (!item)
+        String mytag = gameObject.tag;
+        String dragTag = eventData.pointerDrag.tag;
+        String enterTag = eventData.pointerEnter.tag;
+        if (!item && gameObject.tag == eventData.pointerDrag.tag)
         {
             DragHandler.itemBeeingDragged.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
