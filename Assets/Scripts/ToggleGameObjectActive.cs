@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class ToggleProbeManager : MonoBehaviour {
+public class ToggleGameObjectActive : MonoBehaviour {
 
 
 	// Use this for initialization
@@ -10,7 +10,7 @@ public class ToggleProbeManager : MonoBehaviour {
 	
 	}
 	
-	public void toggleCanvas() {
+	public void toggleActive() {
         if (!gameObject.activeSelf) {
             gameObject.SetActive(true);
         } else {
