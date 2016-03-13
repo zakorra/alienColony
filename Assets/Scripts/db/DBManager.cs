@@ -36,6 +36,7 @@ public class DBManager : MonoBehaviour {
             int shildValue = reader.GetInt32(5);
             string occurrency = reader.GetString(6);
             string quality = reader.GetString(7);
+            string tag = reader.GetString(8);
 
             crystalVO.tier = tier;
             crystalVO.crystalName = crystalName;
@@ -45,6 +46,7 @@ public class DBManager : MonoBehaviour {
             crystalVO.shildValue = shildValue;
             crystalVO.occurrency = occurrency;
             crystalVO.quality = quality;
+            crystalVO.tag = tag;
 
             listCrystalVO.Add(crystalVO);
 

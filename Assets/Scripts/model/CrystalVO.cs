@@ -10,4 +10,5 @@ public class CrystalVO  {
     public int miningValue { get; set; }
     public int engineValue { get; set; }
     public int shildValue { get; set; }
+    public string tag { get; set; }
 }

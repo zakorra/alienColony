@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class StartGame : MonoBehaviour {
-    public DBManager dbManager;
+public class DataManager : MonoBehaviour {
+    public DBManager dbManager; 
 
-    private List<CrystalVO> listCrystalVO;
+    public List<CrystalVO> listCrystalVO { get; private set; }
 
 	// Use this for initialization
 	void Start () {
