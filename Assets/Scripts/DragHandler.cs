@@ -6,13 +6,13 @@ using System;
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
     public static GameObject itemBeeingDragged;
     private Vector3 startPosition;
-    Transform startParent;
+    //Transform startParent;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemBeeingDragged = gameObject;
         startPosition = transform.position;
-        startParent = transform.parent;
+        //startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
