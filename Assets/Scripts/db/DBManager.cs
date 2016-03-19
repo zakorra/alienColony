@@ -13,7 +13,7 @@ public class DBManager : MonoBehaviour {
     void Start () {
     }
 	
-    public List<CrystalVO> getCrystals() {
+    public List<CrystalVO> getPlayerCrystals() {
         List<CrystalVO> listCrystalVO = new List<CrystalVO>();
 
         string conn = "URI=file:" + Application.dataPath + DB_NAME;
@@ -61,5 +61,41 @@ public class DBManager : MonoBehaviour {
 
         return listCrystalVO;
     }
-	
+
+    public List<ModuleVO> gePlayerModules() {
+        List<ModuleVO> listModuleVO = new List<ModuleVO>();
+
+        string conn = "URI=file:" + Application.dataPath + DB_NAME;
+
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to the database.
+        IDbCommand dbcmd = dbconn.CreateCommand();
+        string sqlQuery = "select * from VIEW_PLAYER_MODULES";
+        dbcmd.CommandText = sqlQuery;
+        IDataReader reader = dbcmd.ExecuteReader();
+        while (reader.Read()) {
+            ModuleVO moduleVO = new ModuleVO();
+
+            moduleVO.name = reader.GetString(1);
+            moduleVO.tier = reader.GetInt32(2);
+            moduleVO.red_crystal_slots = reader.GetInt32(2);
+            moduleVO.blue_crystal_slots = reader.GetInt32(2);
+            moduleVO.purple_crystal_slots = reader.GetInt32(2);
+            moduleVO.cost_modifier = reader.GetInt32(2);
+
+            listModuleVO.Add(moduleVO);
+
+            Debug.Log("moduleName= " + moduleVO);
+        }
+        reader.Close();
+        reader = null;
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
+
+        return listModuleVO;
+    }
+
 }
