@@ -15,20 +15,29 @@ public class LoadCrystals : MonoBehaviour {
         //GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
 
         GameObject objBlueCrystal = Resources.Load("crystals/crystalBlue") as GameObject;
-        GameObject objBluePurple = Resources.Load("crystals/crystalPurple") as GameObject;
-        GameObject objBlueRed = Resources.Load("crystals/crystalRed") as GameObject;
-       
+        GameObject objPurpleCrystal = Resources.Load("crystals/crystalPurple") as GameObject;
+        GameObject objRedCrystal = Resources.Load("crystals/crystalRed") as GameObject;
+        GameObject objGreenCrystal = Resources.Load("crystals/crystalGreen") as GameObject;
+        GameObject objYellowCrystal = Resources.Load("crystals/crystalYellow") as GameObject;
+        GameObject objTurqouiseCrystal = Resources.Load("crystals/crystalTurqouise") as GameObject;
+
 
         int i = 0;
         foreach (Transform slotTransform in slots) {
             //GameObject item = slotTransform.GetComponent<Slot>().item;
             if (dataManager.listCrystalVO.Count > i) {
-                if (dataManager.listCrystalVO[i].tag.Equals("crystalBlue")) {
+                if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_BLUE)) {
                     addCrystal(objBlueCrystal, slotTransform);
-                } else if (dataManager.listCrystalVO[i].tag.Equals("crystalPurple")) {
-                    addCrystal(objBluePurple, slotTransform);
-                } else if (dataManager.listCrystalVO[i].tag.Equals("crystalRed")) {
-                    addCrystal(objBlueRed, slotTransform);
+                } else if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_PURPLE)) {
+                    addCrystal(objPurpleCrystal, slotTransform);
+                } else if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_GREEN)) {
+                    addCrystal(objGreenCrystal, slotTransform);
+                } else if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_RED)) {
+                    addCrystal(objRedCrystal, slotTransform);
+                } else if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_YELLOW)) {
+                    addCrystal(objYellowCrystal, slotTransform);
+                } else if (dataManager.listCrystalVO[i].tag.Equals(TagConstants.CRYSTAL_TURQOUISE)) {
+                    addCrystal(objTurqouiseCrystal, slotTransform);
                 } else {
                     Debug.Log("Unknown Tag in 'putAvailableCrystalsIntoSlots':" + dataManager.listCrystalVO[i].tag);
                 }

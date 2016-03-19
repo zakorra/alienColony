@@ -7,71 +7,72 @@ using Mono.Data.Sqlite;
 
 public class DBManager : MonoBehaviour {
 
-    private readonly string DB_NAME = "/database/aliencolony.sqlite3"; //Path to database.
+    private static readonly string DB_NAME = "/database/aliencolony.sqlite3"; //Path to database.
 
-    // Use this for initialization
-    void Start () {
+    private IDbConnection dbconn;
+    private string applicationPath;
+
+    public List<CrystalVO> dbCrystalVOs { get; private set; }
+    public List<ModuleVO> dbModuleVOs { get; private set; }
+
+    public DBManager(String applicationPath) {
+        this.applicationPath = applicationPath;
     }
-	
-    public List<CrystalVO> getPlayerCrystals() {
-        List<CrystalVO> listCrystalVO = new List<CrystalVO>();
 
+    public void Awake() {
         string conn = "URI=file:" + Application.dataPath + DB_NAME;
 
-        IDbConnection dbconn;
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
-        IDbCommand dbcmd = dbconn.CreateCommand();
+
+        dbCrystalVOs = loadPlayerCrystals();
+        dbModuleVOs = loadPlayerModules();
+    }
+
+    public void OnDestroy() {
+        dbconn.Close();
+        dbconn = null;
+    }
+
+    private List<CrystalVO> loadPlayerCrystals() {
+        List<CrystalVO> listCrystalVO = new List<CrystalVO>();
+
         string sqlQuery = "select * from VIEW_PLAYER_CRYSTALS";
+        IDbCommand dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
         while (reader.Read()) {
             CrystalVO crystalVO = new CrystalVO();
 
-            int tier = reader.GetInt32(0);
-            string crystalName = reader.GetString(1);
-            int scanValue = reader.GetInt32(2);
-            int miningValue = reader.GetInt32(3);
-            int engineValue = reader.GetInt32(4);
-            int shildValue = reader.GetInt32(5);
-            string occurrency = reader.GetString(6);
-            string quality = reader.GetString(7);
-            string tag = reader.GetString(8);
-
-            crystalVO.tier = tier;
-            crystalVO.crystalName = crystalName;
-            crystalVO.scanValue = scanValue;
-            crystalVO.miningValue = miningValue;
-            crystalVO.engineValue = engineValue;
-            crystalVO.shildValue = shildValue;
-            crystalVO.occurrency = occurrency;
-            crystalVO.quality = quality;
-            crystalVO.tag = tag;
+            crystalVO.tier = reader.GetInt32(0);
+            crystalVO.crystalName = reader.GetString(1);
+            crystalVO.scanValue = reader.GetInt32(2);
+            crystalVO.miningValue = reader.GetInt32(3);
+            crystalVO.engineValue = reader.GetInt32(4);
+            crystalVO.shildValue = reader.GetInt32(5);
+            crystalVO.occurrency = reader.GetString(6);
+            crystalVO.quality = reader.GetString(7);
+            crystalVO.tag = reader.GetString(8);
+            crystalVO.count = reader.GetInt32(9);
 
             listCrystalVO.Add(crystalVO);
 
-            Debug.Log("crystalName= " + crystalName);
+            Debug.Log("crystalName= " + crystalVO.crystalName);
         }
         reader.Close();
         reader = null;
+
         dbcmd.Dispose();
         dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
 
         return listCrystalVO;
     }
 
-    public List<ModuleVO> gePlayerModules() {
+    private List<ModuleVO> loadPlayerModules() {
         List<ModuleVO> listModuleVO = new List<ModuleVO>();
 
-        string conn = "URI=file:" + Application.dataPath + DB_NAME;
-
-        IDbConnection dbconn;
-        dbconn = (IDbConnection)new SqliteConnection(conn);
-        dbconn.Open(); //Open connection to the database.
-        IDbCommand dbcmd = dbconn.CreateCommand();
         string sqlQuery = "select * from VIEW_PLAYER_MODULES";
+        IDbCommand dbcmd = dbconn.CreateCommand();
         dbcmd.CommandText = sqlQuery;
         IDataReader reader = dbcmd.ExecuteReader();
         while (reader.Read()) {
@@ -88,14 +89,13 @@ public class DBManager : MonoBehaviour {
 
             Debug.Log("moduleName= " + moduleVO);
         }
-        reader.Close();
-        reader = null;
+
         dbcmd.Dispose();
         dbcmd = null;
-        dbconn.Close();
-        dbconn = null;
 
         return listModuleVO;
     }
+
+
 
 }
