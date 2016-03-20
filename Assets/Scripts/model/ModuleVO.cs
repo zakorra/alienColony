@@ -9,7 +9,7 @@ public class ModuleVO  {
     public float cost_modifier { get; set; }
 
     public string getDropBoxText() {
-        string optionText = System.String.Format("{0} - T[{1}], R[{2}], B[{3}], P[{4}],", name, tier, red_crystal_slots, blue_crystal_slots, purple_crystal_slots);
+        string optionText = System.String.Format("{0} - T[{1}], R[{2}], B[{3}], P[{4}]", name, tier, red_crystal_slots, blue_crystal_slots, purple_crystal_slots);
         return optionText;
     }
 }
