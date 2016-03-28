@@ -21,7 +21,39 @@ public class LoadCrystals : MonoBehaviour {
         GameObject objYellowCrystal = Resources.Load("crystals/crystalYellow") as GameObject;
         GameObject objTurqouiseCrystal = Resources.Load("crystals/crystalTurqouise") as GameObject;
 
+        GameObject objSlotAvailableCrystal = Resources.Load("slots/slotAvailableCrystal") as GameObject;
 
+        foreach (CrystalVO crystalVO in dataManager.listCrystalVO) {
+
+            GameObject curCrystal = null;
+            if (crystalVO.tag.Equals(TagConstants.CRYSTAL_BLUE)) {
+                curCrystal = objBlueCrystal;
+            } else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_PURPLE)) {
+                curCrystal = objPurpleCrystal;
+            } else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_RED)) {
+                curCrystal = objRedCrystal;
+            } else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_GREEN)) {
+                curCrystal = objGreenCrystal;
+            } else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_YELLOW)) {
+                curCrystal = objYellowCrystal;
+            } else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_TURQOUISE)) {
+                curCrystal = objTurqouiseCrystal;
+            }
+
+            if (curCrystal != null) {
+                for (int i = 0; i < crystalVO.count; i++) {
+                    GameObject newCrystalSlot = Instantiate(objSlotAvailableCrystal) as GameObject;
+                    newCrystalSlot.transform.SetParent(slots.transform);
+                    addCrystal(curCrystal, newCrystalSlot.transform);
+                }
+            } else {
+                Debug.Log("Unknown Tag" + crystalVO.tag);
+            }
+        }
+
+        
+
+        /*
         int i = 0;
         foreach (Transform slotTransform in slots) {
             //GameObject item = slotTransform.GetComponent<Slot>().item;
@@ -45,6 +77,7 @@ public class LoadCrystals : MonoBehaviour {
 
             i++;
         }
+        */
     }
 
     private void addCrystal(GameObject crystal, Transform slotTransform) {
