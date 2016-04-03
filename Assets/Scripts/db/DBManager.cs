@@ -51,9 +51,11 @@ public class DBManager : MonoBehaviour {
             crystalVO.engineValue = reader.GetInt32(4);
             crystalVO.shildValue = reader.GetInt32(5);
             crystalVO.occurrency = reader.GetString(6);
-            crystalVO.quality = reader.GetString(7);
-            crystalVO.tag = reader.GetString(8);
-            crystalVO.count = reader.GetInt32(9);
+            crystalVO.occurrencyFactor = reader.GetFloat(7);
+            crystalVO.quality = reader.GetString(8);
+            crystalVO.qualityFactor = reader.GetFloat(9);
+            crystalVO.tag = reader.GetString(10);
+            crystalVO.count = reader.GetInt32(11);
 
             listCrystalVO.Add(crystalVO);
 

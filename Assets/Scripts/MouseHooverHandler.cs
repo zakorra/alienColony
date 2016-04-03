@@ -13,7 +13,9 @@ public class MouseHooverHandler : MonoBehaviour, IPointerEnterHandler, IPointerE
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        textTooltipText.text = gameObject.name;
+        CrystalVO crystalVO = gameObject.GetComponent<CrystalVO>();
+        textTooltipText.text = crystalVO.getToolTipText();
+        //textTooltipText.text = gameObject.name;
     }
 
     public void OnPointerExit(PointerEventData eventData) {

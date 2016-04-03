@@ -5,15 +5,42 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 
 public class ModuleCrystalManager : MonoBehaviour {
+    public Transform availableCrystalsSlots;
+
     public Dropdown moduleDropBox;
     public DataManager dataManager;
     public Transform redSlots;
 
-    private GameObject objRedCrystal;
+    private List<GameObject> currentAvailableCrystalsSlots;
+
+    private GameObject objEquippedRedCrystal;
     private List<GameObject> currentRedSlots;
+
+    private GameObject objBlueCrystal;
+    private GameObject objPurpleCrystal;
+    private GameObject objRedCrystal;
+    private GameObject objGreenCrystal;
+    private GameObject objYellowCrystal;
+    private GameObject objTurqouiseCrystal;
+
+    private GameObject objSlotAvailableCrystal;
 
     // Use this for initialization
     void Start () {
+        // Init/Cache Resources
+        objBlueCrystal = Resources.Load("crystals/crystalBlue") as GameObject;
+        objPurpleCrystal = Resources.Load("crystals/crystalPurple") as GameObject;
+        objRedCrystal = Resources.Load("crystals/crystalRed") as GameObject;
+        objGreenCrystal = Resources.Load("crystals/crystalGreen") as GameObject;
+        objYellowCrystal = Resources.Load("crystals/crystalYellow") as GameObject;
+        objTurqouiseCrystal = Resources.Load("crystals/crystalTurqouise") as GameObject;
+
+        objSlotAvailableCrystal = Resources.Load("slots/slotAvailableCrystal") as GameObject;
+
+        //
+        currentAvailableCrystalsSlots = new List<GameObject>();
+
+        //
         currentRedSlots = new List<GameObject>();
 
         moduleDropBox.options.Clear();
@@ -30,22 +57,33 @@ public class ModuleCrystalManager : MonoBehaviour {
         moduleDropBox.onValueChanged.AddListener(valueChanged);
 
         // Slots for crystals
-        objRedCrystal = Resources.Load("slots/slotRedCrystal") as GameObject;
+        objEquippedRedCrystal = Resources.Load("slots/slotRedCrystal") as GameObject;
 
         //
         valueChanged(0);
     }
 
+    /*
+     DropBox Changed Value: New Module
+    */
     public void valueChanged(int value) {
         Debug.Log("ModuleValue changed = " + value);
 
-        foreach(GameObject curRedSlot in currentRedSlots) {
+        // Reset Available Crystals
+        foreach (GameObject curAvailableCrystalSlot in currentAvailableCrystalsSlots) {
+            Destroy(curAvailableCrystalSlot);
+        }
+        currentAvailableCrystalsSlots.Clear();
+        putAvailableCrystalsIntoSlots();
+
+        // Rest equipped crystals
+        foreach (GameObject curRedSlot in currentRedSlots) {
             Destroy(curRedSlot);
         }
 
         currentRedSlots.Clear();
         for (int i=0;i < dataManager.listModuleVO[value].red_crystal_slots; i++) {
-            currentRedSlots.Add(addSlot(objRedCrystal, redSlots));
+            currentRedSlots.Add(addSlot(objEquippedRedCrystal, redSlots));
         }
     }
 
@@ -58,4 +96,67 @@ public class ModuleCrystalManager : MonoBehaviour {
     }
 
 
+
+    private void putAvailableCrystalsIntoSlots()
+    {
+        //Object prefab = AssetDatabase.LoadAssetAtPath("Assets/something.prefab", typeof(GameObject));
+        //GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+        
+
+        foreach (CrystalVO crystalVO in dataManager.listCrystalVO)
+        {
+
+            GameObject curCrystal = null;
+            if (crystalVO.tag.Equals(TagConstants.CRYSTAL_BLUE))
+            {
+                curCrystal = objBlueCrystal;
+            }
+            else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_PURPLE))
+            {
+                curCrystal = objPurpleCrystal;
+            }
+            else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_RED))
+            {
+                curCrystal = objRedCrystal;
+            }
+            else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_GREEN))
+            {
+                curCrystal = objGreenCrystal;
+            }
+            else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_YELLOW))
+            {
+                curCrystal = objYellowCrystal;
+            }
+            else if (crystalVO.tag.Equals(TagConstants.CRYSTAL_TURQOUISE))
+            {
+                curCrystal = objTurqouiseCrystal;
+            }
+
+            if (curCrystal != null)
+            {
+                for (int i = 0; i < crystalVO.count; i++)
+                {
+                    GameObject newCrystalSlot = Instantiate(objSlotAvailableCrystal) as GameObject;
+                    newCrystalSlot.transform.SetParent(availableCrystalsSlots.transform);
+                    addCrystal(curCrystal, newCrystalSlot.transform, crystalVO);
+
+                    currentAvailableCrystalsSlots.Add(newCrystalSlot);
+                }
+            }
+            else {
+                Debug.Log("Unknown Tag" + crystalVO.tag);
+            }
+        }
+    }
+
+    private void addCrystal(GameObject crystal, Transform slotTransform, CrystalVO crystalVO)
+    {
+        GameObject crystalNew = Instantiate(crystal) as GameObject;
+        crystalNew.transform.SetParent(slotTransform.transform);
+        crystalNew.transform.position = slotTransform.transform.position;
+
+        CrystalVO newCrystalVO = crystalNew.gameObject.AddComponent<CrystalVO>();
+        newCrystalVO.cloneFromCrystalVO(crystalVO);
+    }
 }

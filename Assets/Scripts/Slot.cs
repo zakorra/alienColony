@@ -23,8 +23,7 @@ public class Slot : MonoBehaviour, IDropHandler {
         String mytag = gameObject.tag;
         String dragTag = eventData.pointerDrag.tag;
         String enterTag = eventData.pointerEnter.tag;
-        if (!item && gameObject.tag == eventData.pointerDrag.tag)
-        {
+        if(!item && (gameObject.tag == eventData.pointerDrag.tag || gameObject.tag.Equals("availableCrystal"))) {
             DragHandler.itemBeeingDragged.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
         }
