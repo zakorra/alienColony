@@ -76,7 +76,7 @@ public class ModuleCrystalManager : MonoBehaviour {
         currentAvailableCrystalsSlots.Clear();
         putAvailableCrystalsIntoSlots();
 
-        // Rest equipped crystals
+        // Reset equipped crystals
         foreach (GameObject curRedSlot in currentRedSlots) {
             Destroy(curRedSlot);
         }

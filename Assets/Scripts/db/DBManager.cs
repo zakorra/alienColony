@@ -82,10 +82,10 @@ public class DBManager : MonoBehaviour {
 
             moduleVO.name = reader.GetString(1);
             moduleVO.tier = reader.GetInt32(2);
-            moduleVO.red_crystal_slots = reader.GetInt32(2);
-            moduleVO.blue_crystal_slots = reader.GetInt32(2);
-            moduleVO.purple_crystal_slots = reader.GetInt32(2);
-            moduleVO.cost_modifier = reader.GetInt32(2);
+            moduleVO.red_crystal_slots = reader.GetInt32(3);
+            moduleVO.blue_crystal_slots = reader.GetInt32(4);
+            moduleVO.purple_crystal_slots = reader.GetInt32(5);
+            moduleVO.cost_modifier = reader.GetFloat(6);
 
             listModuleVO.Add(moduleVO);
 
