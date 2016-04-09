@@ -22,19 +22,21 @@ public class Equipment : MonoBehaviour, IHasChanged {
         moduleText.text = "";
 
         if (isEquipment) {
+            // get all crystals from the different colored slots
             List<CrystalVO> crystals = new List<CrystalVO>();
 
-            foreach (Transform slotTransform in slots) {
-                GameObject item = slotTransform.GetComponent<Slot>().item;
-                if(item) {
-                    CrystalVO crystalVO = item.GetComponent<CrystalVO>();
-                    crystals.Add(crystalVO);
-
-                    string moduleInfoText = calcModuleValues(crystals);
-
-                    moduleText.text = moduleInfoText;
+            foreach(Transform crystalSots in slots) {
+                foreach(Transform slotTransform in crystalSots) {
+                    GameObject item = slotTransform.GetComponent<Slot>().item;
+                    if(item) {
+                        CrystalVO crystalVO = item.GetComponent<CrystalVO>();
+                        crystals.Add(crystalVO);
+                    }
                 }
-            }
+            } // eof crystalSlots
+
+            string moduleInfoText = calcModuleValues(crystals);
+            moduleText.text = moduleInfoText;
         }
     }
 
@@ -49,8 +51,8 @@ public class Equipment : MonoBehaviour, IHasChanged {
         foreach(CrystalVO crystalVO in crystals) {
             scanValue += (float)crystalVO.scanValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
             miningValue += (float)crystalVO.miningValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
-            engineValue += (float) crystalVO.engineValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
-            shildValue += (float) crystalVO.shildValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
+            engineValue += (float)crystalVO.engineValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
+            shildValue += (float)crystalVO.shildValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
         }
         float crystalCount = (float)crystals.Count;
 
@@ -72,7 +74,7 @@ public class Equipment : MonoBehaviour, IHasChanged {
         addToolTipParameter(sb, 3, "Engine");
         addToolTipParameter(sb, 4, "Shield");
 
-        
+
 
         return string.Format(sb.ToString(), "", scanValueDec, miningValueDec, engineValueDec, shildValue);
     }
@@ -84,7 +86,7 @@ public class Equipment : MonoBehaviour, IHasChanged {
         if(fieldName != null) {
             sb.Append(fieldName);
             sb.Append(":\t");
-            
+
         }
         if(index == 0) {
             sb.Append("{" + index + ",-50}");
@@ -92,6 +94,8 @@ public class Equipment : MonoBehaviour, IHasChanged {
             sb.Append("{" + index + ",-50:0.00}");
         }
     }
+
+
 }
 
 namespace UnityEngine.EventSystems

@@ -1,20 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
 using System.Collections.Generic;
 using UnityEngine.Events;
 
 public class ModuleCrystalManager : MonoBehaviour {
     public Transform availableCrystalsSlots;
 
-    public Dropdown moduleDropBox;
     public DataManager dataManager;
+    public Dropdown moduleDropBox;
     public Transform redSlots;
+    public Transform blueSlots;
+    public Transform purpleSlots;
 
     private List<GameObject> currentAvailableCrystalsSlots;
 
     private GameObject objEquippedRedCrystal;
+    private GameObject objEquippedBlueCrystal;
+    private GameObject objEquippedPurpleCrystal;
     private List<GameObject> currentRedSlots;
+    private List<GameObject> currentBlueSlots;
+    private List<GameObject> currentPurpleSlots;
 
     private GameObject objBlueCrystal;
     private GameObject objPurpleCrystal;
@@ -42,6 +49,8 @@ public class ModuleCrystalManager : MonoBehaviour {
 
         //
         currentRedSlots = new List<GameObject>();
+        currentBlueSlots = new List<GameObject>();
+        currentPurpleSlots = new List<GameObject>();
 
         moduleDropBox.options.Clear();
         foreach(ModuleVO moduleVO in dataManager.listModuleVO) {
@@ -58,6 +67,8 @@ public class ModuleCrystalManager : MonoBehaviour {
 
         // Slots for crystals
         objEquippedRedCrystal = Resources.Load("slots/slotRedCrystal") as GameObject;
+        objEquippedBlueCrystal = Resources.Load("slots/slotBlueCrystal") as GameObject;
+        objEquippedPurpleCrystal = Resources.Load("slots/slotPurpleCrystal") as GameObject;
 
         //
         valueChanged(0);
@@ -76,16 +87,18 @@ public class ModuleCrystalManager : MonoBehaviour {
         currentAvailableCrystalsSlots.Clear();
         putAvailableCrystalsIntoSlots();
 
-        // Reset equipped crystals
-        foreach (GameObject curRedSlot in currentRedSlots) {
-            Destroy(curRedSlot);
-        }
+        // Reset Red equipped crystals
+        setupEquipedSlot(currentRedSlots, dataManager.listModuleVO[value].red_crystal_slots, redSlots, objEquippedRedCrystal);
 
-        currentRedSlots.Clear();
-        for (int i=0;i < dataManager.listModuleVO[value].red_crystal_slots; i++) {
-            currentRedSlots.Add(addSlot(objEquippedRedCrystal, redSlots));
-        }
+        // Reset Blue equipped crystals
+        setupEquipedSlot(currentBlueSlots, dataManager.listModuleVO[value].blue_crystal_slots, blueSlots, objEquippedBlueCrystal);
+
+        // Reset Purple equipped crystals
+        setupEquipedSlot(currentPurpleSlots, dataManager.listModuleVO[value].purple_crystal_slots, purpleSlots, objEquippedPurpleCrystal);
+
+
     }
+
 
     private GameObject addSlot(GameObject slot, Transform slotTransform) {
         GameObject slotNew = Instantiate(slot) as GameObject;
@@ -95,15 +108,21 @@ public class ModuleCrystalManager : MonoBehaviour {
         return slotNew;
     }
 
+    private void setupEquipedSlot(List<GameObject> equipedSlots, int count, Transform slot, GameObject objResourceCrystal) {
+        foreach(GameObject equipedSlot in equipedSlots) {
+            Destroy(equipedSlot);
+        }
+
+        equipedSlots.Clear();
+        for(int i = 0; i < count; i++) {
+            currentRedSlots.Add(addSlot(objResourceCrystal, slot));
+        }
+    }
+
 
 
     private void putAvailableCrystalsIntoSlots()
     {
-        //Object prefab = AssetDatabase.LoadAssetAtPath("Assets/something.prefab", typeof(GameObject));
-        //GameObject clone = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
-
-        
-
         foreach (CrystalVO crystalVO in dataManager.listCrystalVO)
         {
 
