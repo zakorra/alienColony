@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 public class Equipment : MonoBehaviour, IHasChanged {
     [SerializeField] Boolean isEquipment;
     [SerializeField] Transform slots;
@@ -43,12 +44,18 @@ public class Equipment : MonoBehaviour, IHasChanged {
     private string calcModuleValues(List<CrystalVO> crystals) {
         StringBuilder sb = new StringBuilder();
 
+		float manufactoringCost = 0;
+		float manufactoringTime = 0;
+
         float scanValue = 0;
         float miningValue = 0;
         float engineValue = 0;
         float shildValue = 0;
 
         foreach(CrystalVO crystalVO in crystals) {
+			manufactoringCost += crystalVO.costFactor;
+			manufactoringTime += crystalVO.costFactor * 1.5f;
+
             scanValue += (float)crystalVO.scanValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
             miningValue += (float)crystalVO.miningValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
             engineValue += (float)crystalVO.engineValue * (crystalVO.qualityFactor + crystalVO.occurrencyFactor);
@@ -63,24 +70,32 @@ public class Equipment : MonoBehaviour, IHasChanged {
             shildValue /= crystalCount / 1.5f;
         }
 
-        Decimal scanValueDec = Math.Round((Decimal)scanValue, 3, MidpointRounding.AwayFromZero);
-        Decimal miningValueDec = Math.Round((Decimal)miningValue, 3, MidpointRounding.AwayFromZero);
-        Decimal engineValueDec = Math.Round((Decimal)engineValue, 3, MidpointRounding.AwayFromZero);
-        Decimal shildValueDec = Math.Round((Decimal)shildValue, 3, MidpointRounding.AwayFromZero);
+		float scanValueDec = (float) Math.Round((Decimal)scanValue, 3, MidpointRounding.AwayFromZero);
+		float miningValueDec = (float) Math.Round((Decimal)miningValue, 3, MidpointRounding.AwayFromZero);
+		float engineValueDec = (float) Math.Round((Decimal)engineValue, 3, MidpointRounding.AwayFromZero);
+		float shildValueDec = (float) Math.Round((Decimal)shildValue, 3, MidpointRounding.AwayFromZero);
 
-        addToolTipParameter(sb, 0, "Module");
-        addToolTipParameter(sb, 1, "Scan");
-        addToolTipParameter(sb, 2, "Mining");
-        addToolTipParameter(sb, 3, "Engine");
-        addToolTipParameter(sb, 4, "Shield");
+		float costValue = (scanValue + miningValue + engineValue + shildValue) * 100f * manufactoringCost;
+		float manuTimeValue = costValue * manufactoringTime * 0.0015f;
+
+		sb.Append ("Manu. Cost:\t{0,-150:0.00}");
+		sb.Append ("\n");
+		sb.Append ("Manu Time:\t{1,-150:0.00}");
+		sb.Append ("\n");
+
+        addToolTipParameter(sb, 2, "Module");
+        addToolTipParameter(sb, 3, "Scan");
+        addToolTipParameter(sb, 4, "Mining");
+        addToolTipParameter(sb, 5, "Engine");
+        addToolTipParameter(sb, 6, "Shield");
 
 
 
-        return string.Format(sb.ToString(), "", scanValueDec, miningValueDec, engineValueDec, shildValue);
+		return string.Format(sb.ToString(), costValue, manuTimeValue, null, miningValueDec, scanValueDec, miningValue, engineValueDec, shildValueDec);
     }
 
     private void addToolTipParameter(StringBuilder sb, int index, string fieldName) {
-        if(sb.Length > 0) {
+		if(index > 2) {
             sb.Append("\n\t");
         }
         if(fieldName != null) {
@@ -88,7 +103,7 @@ public class Equipment : MonoBehaviour, IHasChanged {
             sb.Append(":\t");
 
         }
-        if(index == 0) {
+        if(index == 2) {
             sb.Append("{" + index + ",-50}");
         } else {
             sb.Append("{" + index + ",-50:0.00}");

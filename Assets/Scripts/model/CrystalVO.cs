@@ -17,6 +17,7 @@ public class CrystalVO : MonoBehaviour
     public int shildValue { get; set; }
     public string tag { get; set; }
     public int count { get; set; }
+	public float costFactor { get ; set; }
 
     public void cloneFromCrystalVO(CrystalVO crystalVOIn)
     {
@@ -32,12 +33,15 @@ public class CrystalVO : MonoBehaviour
         shildValue = crystalVOIn.shildValue;
         tag = crystalVOIn.tag;
         count = crystalVOIn.count;
+		costFactor = crystalVOIn.costFactor;
     }
 
     public string getToolTipText()
     {
         StringBuilder sb = new StringBuilder();
         int i = 0;
+
+
         addToolTipParameter(sb, i++, null);
         addToolTipParameter(sb, i++, "Occurrency");
         addToolTipParameter(sb, i++, "Quality");
