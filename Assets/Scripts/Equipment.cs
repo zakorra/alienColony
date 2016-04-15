@@ -11,20 +11,36 @@ public class Equipment : MonoBehaviour, IHasChanged {
     [SerializeField] Boolean isEquipment;
     [SerializeField] Transform slots;
     [SerializeField] Text moduleText;
+    [SerializeField] Text moduleTextValues;
+
+    public DataManager dataManager;
+
+    private float scanValueDec;
+    private float miningValueDec;
+    private float engineValueDec;
+    private float shildValueDec;
+
+    private float costValue;
+    private float manuTimeValue;
+
+    private List<CrystalVO> crystals;
+
+    public ModuleVO moduleVo { get; set; } 
 
 
     // Use this for initialization
     void Start () {
+        crystals = new List<CrystalVO>();
         HasChanged();
 	}
 	
     public void HasChanged()
     {
         moduleText.text = "";
+        crystals.Clear();
 
         if (isEquipment) {
             // get all crystals from the different colored slots
-            List<CrystalVO> crystals = new List<CrystalVO>();
 
             foreach(Transform crystalSots in slots) {
                 foreach(Transform slotTransform in crystalSots) {
@@ -36,15 +52,31 @@ public class Equipment : MonoBehaviour, IHasChanged {
                 }
             } // eof crystalSlots
 
-            string moduleInfoText = calcModuleValues(crystals);
-            moduleText.text = moduleInfoText;
+            calcModuleValues(crystals);
         }
     }
 
-    private string calcModuleValues(List<CrystalVO> crystals) {
-        StringBuilder sb = new StringBuilder();
+    public void createModule() {
+        RunModuleVO runModuleVO = new RunModuleVO();
+        runModuleVO.moduleId = moduleVo.id;
+        runModuleVO.scanValue = scanValueDec;
+        runModuleVO.miningValue = miningValueDec;
+        runModuleVO.engineValue = engineValueDec;
+        runModuleVO.shildValue = shildValueDec;
 
-		float manufactoringCost = 0;
+        runModuleVO.costValue = costValue;
+        runModuleVO.manuTimeValue = manuTimeValue;
+
+        dataManager.removeCrystalsFromInventory(crystals);
+
+        dataManager.store(runModuleVO);
+    }
+
+    private void calcModuleValues(List<CrystalVO> crystals) {
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sbValues = new StringBuilder();
+
+        float manufactoringCost = 0;
 		float manufactoringTime = 0;
 
         float scanValue = 0;
@@ -70,28 +102,35 @@ public class Equipment : MonoBehaviour, IHasChanged {
             shildValue /= crystalCount / 1.5f;
         }
 
-		float scanValueDec = (float) Math.Round((Decimal)scanValue, 3, MidpointRounding.AwayFromZero);
-		float miningValueDec = (float) Math.Round((Decimal)miningValue, 3, MidpointRounding.AwayFromZero);
-		float engineValueDec = (float) Math.Round((Decimal)engineValue, 3, MidpointRounding.AwayFromZero);
-		float shildValueDec = (float) Math.Round((Decimal)shildValue, 3, MidpointRounding.AwayFromZero);
+		scanValueDec = (float) Math.Round((Decimal)scanValue, 3, MidpointRounding.AwayFromZero);
+		miningValueDec = (float) Math.Round((Decimal)miningValue, 3, MidpointRounding.AwayFromZero);
+		engineValueDec = (float) Math.Round((Decimal)engineValue, 3, MidpointRounding.AwayFromZero);
+		shildValueDec = (float) Math.Round((Decimal)shildValue, 3, MidpointRounding.AwayFromZero);
 
-		float costValue = (scanValue + miningValue + engineValue + shildValue) * 100f * manufactoringCost;
-		float manuTimeValue = costValue * manufactoringTime * 0.0015f;
+		costValue = (scanValue + miningValue + engineValue + shildValue) * 100f * manufactoringCost;
+		manuTimeValue = costValue * manufactoringTime * 0.0015f;
 
-		sb.Append ("Manu. Cost:\t{0,-150:0.00}");
-		sb.Append ("\n");
-		sb.Append ("Manu Time:\t{1,-150:0.00}");
-		sb.Append ("\n");
+		sb.Append("Manu Cost:" + "\n");
+		sb.Append("Manu Time:" + "\n");
 
-        addToolTipParameter(sb, 2, "Module");
-        addToolTipParameter(sb, 3, "Scan");
-        addToolTipParameter(sb, 4, "Mining");
-        addToolTipParameter(sb, 5, "Engine");
-        addToolTipParameter(sb, 6, "Shield");
+        sb.Append("Module" + "\n");
+        sb.Append("\tScan" + "\n");
+        sb.Append("\tMining" + "\n");
+        sb.Append("\tEngine" + "\n");
+        sb.Append("\tShield" + "\n");
 
+        moduleText.text = sb.ToString();
 
+        sbValues.Append(costValue + "\n");
+        sbValues.Append(manuTimeValue + "\n");
+        sbValues.Append("\n");
+        sbValues.Append(miningValueDec + "\n");
+        sbValues.Append(scanValueDec + "\n");
+        sbValues.Append(miningValue + "\n");
+        sbValues.Append(engineValueDec + "\n");
+        sbValues.Append(shildValueDec);
 
-		return string.Format(sb.ToString(), costValue, manuTimeValue, null, miningValueDec, scanValueDec, miningValue, engineValueDec, shildValueDec);
+        moduleTextValues.text = sbValues.ToString();
     }
 
     private void addToolTipParameter(StringBuilder sb, int index, string fieldName) {
@@ -103,14 +142,13 @@ public class Equipment : MonoBehaviour, IHasChanged {
             sb.Append(":\t");
 
         }
+        
         if(index == 2) {
             sb.Append("{" + index + ",-50}");
         } else {
             sb.Append("{" + index + ",-50:0.00}");
         }
     }
-
-
 }
 
 namespace UnityEngine.EventSystems
