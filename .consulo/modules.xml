@@ -2075,6 +2075,8 @@
         <module-layer name="Editor">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2107,6 +2109,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2163,6 +2167,8 @@
         <module-layer name="Linux (32 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2195,6 +2201,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2251,6 +2259,8 @@
         <module-layer name="Linux (64 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2283,6 +2293,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2339,6 +2351,8 @@
         <module-layer name="Linux (any)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2371,6 +2385,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2427,6 +2443,8 @@
         <module-layer name="MacOS (32 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2459,6 +2477,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2515,6 +2535,8 @@
         <module-layer name="MacOS (64 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2547,6 +2569,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2603,6 +2627,8 @@
         <module-layer name="MacOS (any)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2635,6 +2661,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2691,6 +2719,8 @@
         <module-layer name="Windows (32 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2723,6 +2753,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />
@@ -2779,6 +2811,8 @@
         <module-layer name="Windows (64 bit)">
           <extension id="unity3d-child" />
           <extension id="unity3d-csharp-child" unsafe-code="false" language-version-module-name="" language-version-name="" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/BuildPipeMouseHooverHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/DragHandler.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/Equipment.cs" />
@@ -2811,6 +2845,8 @@
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/PlayerVO.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/model/RunModuleVO.cs.meta" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs" />
+          <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/singleton/Singleton.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/slot/LoadCrystals.cs.meta" />
           <content url="file://$USER_HOME$/Documents/work/alienColony/Assets/Scripts/tags/TagConstants.cs" />

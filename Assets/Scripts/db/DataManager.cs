@@ -13,6 +13,8 @@ public class DataManager : MonoBehaviour {
     public int production { get; set; }
     public int research { get; set; }
 
+    public List<RunModuleVO> runModuleVOBuildPipeline { get; private set; }
+
     public void Awake() {
         // Init: read data from DB
         listCrystalVO = dbManager.dbCrystalVOs;
@@ -36,5 +38,9 @@ public class DataManager : MonoBehaviour {
     internal void removeCrystalsFromInventory(List<CrystalVO> crystals) {
         dbManager.removeCrystalsFromInventory(crystals);
         listCrystalVO = dbManager.dbCrystalVOs;
+    }
+
+    public void addToBuildPipeline(RunModuleVO runModuleVO) {
+        runModuleVOBuildPipeline.Add(runModuleVO);
     }
 }

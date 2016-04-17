@@ -70,6 +70,7 @@ public class Equipment : MonoBehaviour, IHasChanged {
     dataManager.credits -= costValue;
 
     dataManager.store(runModuleVO);
+		dataManager.addToBuildPipeline (runModuleVO);
 
     //ExecuteEvents.ExecuteHierarchy<IPlayerResourcesChanged>(gameObject, null, (x, y) => x.PlayerResourcesChanged());
 		//ExecuteEvents.Execute<IPlayerResourcesChanged>(InfoUpdater.Instance, null, (x, y) => x.PlayerResourcesChanged());
