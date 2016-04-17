@@ -53,6 +53,7 @@ public class ModuleCrystalManager : MonoBehaviour {
     currentRedSlots = new List<GameObject>();
     currentBlueSlots = new List<GameObject>();
     currentPurpleSlots = new List<GameObject>();
+
   }
 
   public void init() {
